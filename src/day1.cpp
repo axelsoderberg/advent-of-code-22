@@ -3,27 +3,43 @@
 #include <fstream>
 #include <sstream> 
 #include <string>
+#include <algorithm>
+#include <iterator>
 
-
+std::vector<int> readInput(std::string fileName);
+int getMaxElement(std::vector<int> list);
 
 int main() {
-    
+    std::cout << "Highest cal value: " << getMaxElement(readInput("../../inputs/day1_input.txt"));
+
     return 1;
 }
 
-// return what we need
-std::vector<std::string> readInput(std::string fileName) {
+std::vector<int> readInput(std::string fileName) {
     std::ifstream file(fileName);
-    std::string line;
-    //std::vector<std::string> 
+    std::stringstream is;
+    std::vector<int> values;
+    std::string s;
+    int val = 0;
+    if (file) {
+        is << file.rdbuf();    
+        file.close();
+ }
 
-    while (getline(file, line))
-    {
-        std::istringstream atom(line); 
-        // Handle line    
-        // append to something
+    while (getline(is, s)) {
+        if (s.empty() || s == "\n") {
+            values.push_back(val);
+            val = 0;
+            continue;
+        } 
+        val += stoi(s);
     }
+    return values;
+}
 
-    file.close(); 
-    //return input;
+int getMaxElement(std::vector<int> list) {
+    int highest = 0;
+    std::sort(list.begin(), list.end());
+    int n = list.size();
+    return list.at(n - 1) + list.at(n - 2) + list.at(n - 3);
 }
