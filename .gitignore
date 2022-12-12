@@ -17,3 +17,8 @@
 *.rule
 *.sln
 *.json
+build/CMakeCache.txt
+build/CMakeFiles/TargetDirectories.txt
+build/CMakeFiles/3.25.0-rc3/VCTargetsPath.txt
+build/CMakeFiles/3.25.0-rc3/CompilerIdCXX/CMakeCXXCompilerId.cpp
+build/CMakeFiles/3.25.0-rc3/CompilerIdC/CMakeCCompilerId.c
